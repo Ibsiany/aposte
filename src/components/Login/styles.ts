@@ -26,13 +26,14 @@ export const LoginContainer = styled.div `
     align-items: center;
     flex-direction: column;
     
-    width: 20rem;
+    width: 30rem;
     height: 20rem;
     
     border-radius: 0.5rem;
     padding: 1rem;
-    background-color: #A9A9A9;
-    opacity: 0.9;
+    background: #A9A9A9;
+    box-shadow: 10px 10px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
     
     gap: 1.5rem;
 `;
@@ -46,6 +47,7 @@ export const ContainerInput = styled.div `
 
 export const Label = styled.label `
     font-size: 1rem;
+    font-weight: 300;
     color: #000000;
 `;
 
@@ -54,4 +56,12 @@ export const Input = styled.input `
     height: 2rem;
     border-radius: 0.25rem;
     border: 1px #000000 solid;
+
+    width: 25rem;
+    height: 2.5rem;
+
+    padding: 0.25rem;
+
+    background: #C5C0C0;
+    border-radius: 0.25rem;
 `;
