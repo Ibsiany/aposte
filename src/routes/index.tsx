@@ -5,9 +5,7 @@ export const Routes: React.FC = () => {
 return (
         <BrowserRouter>
             <Router>
-                <Route path="/">
-                    <Login />
-                </Route>
+                <Route path="/" element={<Login />} />
             </Router>
         </BrowserRouter>
     );
