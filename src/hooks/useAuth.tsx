@@ -16,8 +16,8 @@ interface User {
 }
 
 interface SignInCredentials {
-  cpf: string;
-  code: string;
+  email: string;
+  password: string;
 }
   
 interface AuthContextData {
@@ -64,9 +64,9 @@ export const AuthContext = createContext<AuthContextData>(
   
     const isAuthenticated = !!data.token;
   
-    const signIn = useCallback(async ({ cpf, code }: SignInCredentials) => {
+    const signIn = useCallback(async ({ email, password }: SignInCredentials) => {
       try {
-        const response = await api.post('/session', { cpf, code });
+        const response = await api.post('/session', { email, password });
   
         setData(response.data);
   

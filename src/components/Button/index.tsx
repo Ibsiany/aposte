@@ -2,12 +2,13 @@ import { Container, ButtonForms } from "./styles";
 
 interface IInputProps {
     name: string;
+    onClick: () => void;
 }
 
-export function Button({ name}:IInputProps){
+export function Button({ name, onClick }:IInputProps){
     return (
         <Container>
-            <ButtonForms>
+            <ButtonForms onClick={onClick}>
                 {name}
             </ButtonForms>
         </Container>
