@@ -66,7 +66,7 @@ export const AuthContext = createContext<AuthContextData>(
   
     const signIn = useCallback(async ({ email, password }: SignInCredentials) => {
       try {
-        const response = await api.post('/session', { email, password });
+        const response = await api.post('/user/session', { email, password });
   
         setData(response.data);
   
