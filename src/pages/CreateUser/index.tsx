@@ -15,7 +15,7 @@ export function CreateUser(){
     return (
         <Container>
             <LoginContainer>
-                <Title>Login</Title>          
+                <Title>Cadastro</Title>          
                 <Input type="text" label="Nome" value={name} setValue={setName}/>
                 <Input type="text" label="E-mail" value={email} setValue={setEmail}/>
                 <Input type="password" label="Senha" value={password} setValue={setPassword}/>
