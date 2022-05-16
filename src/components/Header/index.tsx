@@ -9,16 +9,16 @@ export function Header(){
                 <Image src={logo} alt="logo" />
             </Containerimage>
             <ContainerPage>
-                <Link to="/auth/dashboard">
+                <Link to="/auth/dashboard" id="dashboard">
                     Minhas apostas
                 </Link>
-                <Link to ='/auth/bets-play'>
+                <Link to ='/auth/bets-play' id="play">
                     Apostas no jogo
                 </Link>
-                <Link to='/auth/bets-score'>
+                <Link to='/auth/bets-score' id="score">
                     Apostas no placar
                 </Link>
-                <Link to='/auth/result'>
+                <Link to='/auth/result' id="result">
                     Resultados
                 </Link>
             </ContainerPage>
