@@ -38,17 +38,17 @@ export const LoginContainer = styled.div `
     border-radius: 10px;
 
     gap: 1.5rem;
-`;
- 
-export const NewUser = styled.a`
-    text-decoration: underline;
-    border: none;
-    background:transparent;
 
-    font-family: 'Poppins', sans-serif;
-    font-style: normal;
-    font-weight: 500;
+    a {
+        text-decoration: underline;
+        border: none;
+        background:transparent;
 
-    color: #0000FF;
+        font-family: 'Poppins', sans-serif;
+        font-style: normal;
+        font-weight: 500;
+
+        color: #0000FF;
+    }
 `;
 

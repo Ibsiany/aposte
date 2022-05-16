@@ -1,7 +1,8 @@
 import { useCallback, useState } from 'react'
+import { Link } from 'react-router-dom';
 import { Button } from '../../components/Button'
 import { Input } from '../../components/Input'
-import { Container, Title, LoginContainer,NewUser } from './styles'
+import { Container, Title, LoginContainer } from './styles'
 
 export function Login(){
     const [email, setEmail] = useState('');
@@ -21,9 +22,9 @@ export function Login(){
 
                 <Button name="Entrar" onClick={login}/>
 
-                <NewUser href="/create">
+                <Link to="/create">
                     Cadastre-se
-                </NewUser>
+                </Link>
             </LoginContainer>
         </Container>
     )

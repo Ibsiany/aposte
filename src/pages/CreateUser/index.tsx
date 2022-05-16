@@ -1,7 +1,8 @@
 import { useCallback, useState } from 'react'
+import { Link } from 'react-router-dom';
 import { Button } from '../../components/Button'
 import { Input } from '../../components/Input'
-import { Container, Title, LoginContainer } from './styles'
+import { Container, Title, LoginContainer, ContainerBack } from './styles'
 
 export function CreateUser(){
     const [name, setName] = useState('');
@@ -21,6 +22,11 @@ export function CreateUser(){
                 <Input type="password" label="Senha" value={password} setValue={setPassword}/>
 
                 <Button onClick={createProfile} name="Cadastrar"/>
+                <ContainerBack>
+                    <Link to='/'>
+                        Voltar
+                    </Link>
+                </ContainerBack>
             </LoginContainer>
         </Container>
     )

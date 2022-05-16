@@ -37,7 +37,21 @@ export const LoginContainer = styled.div `
     box-shadow: 10px 10px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
 
-    gap: 1.5rem;
+    gap: 1rem;
+`;
+
+export const ContainerBack = styled.div`
+    a {
+        text-decoration: underline;
+        border: none;
+        background:transparent;
+
+        font-family: 'Poppins', sans-serif;
+        font-style: normal;
+        font-weight: 500;
+
+        color: #0000FF;
+    }
 `;
  
 
