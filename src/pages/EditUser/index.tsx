@@ -22,7 +22,7 @@ export function EditUser(){
                 password
             })
     
-            navigate('/dashboard')
+            navigate('/auth/dashboard')
         }catch(error){
             toast.error('Ocorreu algum erro na criação do usuário!')
         }
@@ -39,7 +39,7 @@ export function EditUser(){
 
                 <Button onClick={createProfile} name="Cadastrar"/>
                 <ContainerBack>
-                    <Link to='/dashboard'>
+                    <Link to='/auth/dashboard'>
                         Voltar
                     </Link>
                 </ContainerBack>
