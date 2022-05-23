@@ -1,5 +1,6 @@
 import {BrowserRouter, Routes as Router, Route } from 'react-router-dom';
 import { CreateUser } from '../pages/CreateUser';
+import { EditUser } from '../pages/EditUser';
 import { Login } from '../pages/Login';
 import { MyBets } from '../pages/MyBets';
 import { PrivateRoute } from './Route';
@@ -34,6 +35,7 @@ return (
                 <Route path="/create" element={<CreateUser />} />
                 <Route path="/auth" element={<PrivateRoute />}>
                     <Route path="/auth/dashboard" element={<MyBets />} />
+                    <Route path="/auth/edit-user" element={<EditUser />} />
                 </Route>
             </Router>
         </BrowserRouter>

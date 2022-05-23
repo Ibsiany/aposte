@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import toast, { Toaster } from 'react-hot-toast';
 import { Container, Title, LoginContainer, ContainerBack } from './styles'
 
-export function CreateUser(){
+export function EditUser(){
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -16,13 +16,13 @@ export function CreateUser(){
 
     const createProfile = useCallback(async () => {
         try{
-            await api.post('/user/create', {
+            await api.post('/user/edit', {
                 name, 
                 email, 
                 password
             })
     
-            navigate('/')
+            navigate('/dashboard')
         }catch(error){
             toast.error('Ocorreu algum erro na criação do usuário!')
         }
@@ -32,14 +32,14 @@ export function CreateUser(){
         <Container>
             <Toaster position="top-right" reverseOrder={false} />
             <LoginContainer>
-                <Title>Cadastro</Title>          
+                <Title>Editar usuário</Title>          
                 <Input type="text" label="Nome" value={name} setValue={setName}/>
-                <Input type="text" label="E-mail" value={email} setValue={setEmail}/>
+                <Input type="text" label="* E-mail (confirmação)" value={email} setValue={setEmail}/>
                 <Input type="password" label="Senha" value={password} setValue={setPassword}/>
 
                 <Button onClick={createProfile} name="Cadastrar"/>
                 <ContainerBack>
-                    <Link to='/'>
+                    <Link to='/dashboard'>
                         Voltar
                     </Link>
                 </ContainerBack>

@@ -1,8 +1,13 @@
 import { Link } from "react-router-dom";
-import { Container, ContainerPage, Containerimage, Image, ContainerLogout,Button } from "./styles";
+import { useAuth } from "../../hooks/useAuth";
+import { Container, ContainerPage, Containerimage, Image, ContainerButtons, Button } from "./styles";
 const logo = require('../../images/logo.jpeg')
+const Edit = require('../../images/edit_profile.png')
+const logout = require('../../images/logout.png')
 
 export function Header(){
+    const { signOut } = useAuth();
+
     return (
         <Container>
             <Containerimage>
@@ -22,11 +27,14 @@ export function Header(){
                     Resultados
                 </Link>
             </ContainerPage>
-            <ContainerLogout>
-                <Button>
-                    Sair
+            <ContainerButtons>
+                <Link to='/auth/edit-user' id="result">
+                    <img src={Edit} alt="Editar perfil" />
+                </Link>
+                <Button onClick={signOut}>
+                    <img src={logout} alt="Sair" />
                 </Button>
-            </ContainerLogout>
+            </ContainerButtons>
         </Container>
     )
 }

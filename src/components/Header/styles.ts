@@ -53,12 +53,20 @@ export const Image = styled.img `
 `;
 
     
-export const ContainerLogout = styled.div `
+export const ContainerButtons = styled.div `
     display: flex;
     justify-content: center;
     align-items: center;
     
     height: 100%;
+
+    gap: 1rem;
+
+    
+    img{
+        width: 1.5rem;
+        height: 1.5rem;
+    }
 `;
 
 export const Button = styled.button `

@@ -14,6 +14,11 @@ interface User {
   email: string;
   token: string
 }
+  
+interface IData {
+  user: User;
+  token: string
+}
 
 interface SignInCredentials {
   email: string;
@@ -21,7 +26,7 @@ interface SignInCredentials {
 }
   
 interface AuthContextData {
-  user: User;
+  user: IData;
   isAuthenticated: boolean;
   signIn(credentials: SignInCredentials): Promise<void>;
   signOut(): void;
@@ -36,7 +41,7 @@ export const AuthContext = createContext<AuthContextData>(
 );
   
   export function AuthProvider({ children }: AuthProviderProps) {
-    const [data, setData] = useState<User>(() => {
+    const [data, setData] = useState<IData>(() => {
       const user = localStorage.getItem('@Aposte:user');
   
       if (user) {
@@ -65,34 +70,32 @@ export const AuthContext = createContext<AuthContextData>(
     const isAuthenticated = !!data.token;
   
     const signIn = useCallback(async ({ email, password }: SignInCredentials) => {
-      try {
-        const response = await api.post('/user/session', { email, password });
+      const response = await api.post<IData>('/user/session', {
+        email,
+        password,
+      });
   
-        setData(response.data);
+      const { token, user } = response.data;
   
-        localStorage.setItem(
-          '@Aposte:user',
-          JSON.stringify({
-            code: response.data.code,
-            token: response.data.token,
-          }),
-        );
   
-        api.defaults.headers.common.Authorization = `Bearer ${response.data.token}`;
-      } catch (error) {
-        console.log(error);
-      }
+      localStorage.setItem('@Aposte:token', token);
+
+      localStorage.setItem('@Aposte:user', JSON.stringify(user));
+
+      setData({ token, user });
+  
+      api.defaults.headers.common.authorization = `Bearer ${token}`;
     }, []);
   
     const signOut = useCallback(() => {
       localStorage.removeItem('@Aposte:user');
   
-      setData({} as User);
+      setData({} as IData);
     }, []);
   
     return (
       <AuthContext.Provider
-        value={{ signIn, signOut, isAuthenticated, user: data }}
+        value={{ signIn , signOut, isAuthenticated, user: data }}
       >
         {children}
       </AuthContext.Provider>
@@ -101,7 +104,7 @@ export const AuthContext = createContext<AuthContextData>(
   
   export function useAuth() {
     const context = useContext(AuthContext);
-  
+
     return context;
   }
   
