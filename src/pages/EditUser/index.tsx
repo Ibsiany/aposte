@@ -14,7 +14,7 @@ export function EditUser(){
 
     const navigate = useNavigate();
 
-    const createProfile = useCallback(async () => {
+    const editProfile = useCallback(async () => {
         try{
             await api.post('/user/edit', {
                 name, 
@@ -37,7 +37,7 @@ export function EditUser(){
                 <Input type="text" label="* E-mail (confirmação)" value={email} setValue={setEmail}/>
                 <Input type="password" label="Senha" value={password} setValue={setPassword}/>
 
-                <Button onClick={createProfile} name="Cadastrar"/>
+                <Button onClick={editProfile} name="Salvar"/>
                 <ContainerBack>
                     <Link to='/auth/dashboard'>
                         Voltar
