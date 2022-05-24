@@ -41,6 +41,11 @@ export const LoginContainer = styled.div `
 `;
 
 export const ContainerBack = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+
     a {
         text-decoration: underline;
         border: none;
@@ -54,4 +59,14 @@ export const ContainerBack = styled.div`
     }
 `;
  
+export const ButtonDelete = styled.button `
+    border: none;
+    background: transparent;
+    
+    img {
+        background: transparent;
+        width: 2rem;
+        height: 2rem;
+    }
+`;
 
