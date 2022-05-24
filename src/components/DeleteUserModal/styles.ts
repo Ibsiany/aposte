@@ -26,7 +26,7 @@ export const Container = styled.div`
   margin: auto;
 
   gap: 2rem;
-  background: #fff;
+  background: #e4e4e4;
 `;
 
 export const Title = styled.span `
