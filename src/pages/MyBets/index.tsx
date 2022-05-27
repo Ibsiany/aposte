@@ -1,4 +1,5 @@
 import { Header } from '../../components/Header';
+import { Title } from '../../components/Title';
 import { Container, Body, ContainerBets } from './styles';
 
 export function MyBets() {
@@ -6,7 +7,9 @@ export function MyBets() {
     <Container>
       <Header />
       <Body>
-        <ContainerBets></ContainerBets>
+        <ContainerBets>
+          <Title name={"Minhas apostas"}/>
+        </ContainerBets>
       </Body>
     </Container>
   );
