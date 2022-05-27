@@ -29,10 +29,10 @@ export const Container = styled.div`
   background: #e4e4e4;
 `;
 
-export const Title = styled.span `
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #000000;
+export const Title = styled.span`
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #000000;
 `;
 
 export const ContainerClose = styled.div`
@@ -48,9 +48,9 @@ export const ContainerClose = styled.div`
   color: #fff;
 
   img {
-        background: transparent;
-        width: 2rem;
-        height: 2rem;
+    background: transparent;
+    width: 2rem;
+    height: 2rem;
   }
 `;
 
@@ -63,4 +63,3 @@ export const ButtonClose = styled.button`
   background: transparent;
   border: none;
 `;
-

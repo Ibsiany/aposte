@@ -1,30 +1,29 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
-
-export const Container = styled.div `
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    flex-direction: column;
+export const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
 `;
 
-export const Label = styled.label `
-    font-size: 1rem;
-    font-weight: 600;
-    color: #000000;
+export const Label = styled.label`
+  font-size: 1rem;
+  font-weight: 600;
+  color: #000000;
 `;
 
-export const InputForms = styled.input `
-    width: 16rem;
-    height: 2rem;
-    border-radius: 0.25rem;
-    border: 1px #000000 solid;
+export const InputForms = styled.input`
+  width: 16rem;
+  height: 2rem;
+  border-radius: 0.25rem;
+  border: 1px #000000 solid;
 
-    width: 25rem;
-    height: 2.5rem;
+  width: 25rem;
+  height: 2.5rem;
 
-    padding: 0.25rem;
+  padding: 0.25rem;
 
-    background: #C5C0C0;
-    border-radius: 0.25rem;
+  background: #c5c0c0;
+  border-radius: 0.25rem;
 `;

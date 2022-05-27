@@ -8,12 +8,12 @@ import {
   ContainerClose,
   ButtonClose,
   Image,
-  Title
+  Title,
 } from './styles';
 import { useNavigate } from 'react-router-dom';
 import { Input } from '../Input';
 import { Button } from '../Button';
-const close = require('../../images/close.png')
+const close = require('../../images/close.png');
 
 Modal.setAppElement('#root');
 
@@ -32,18 +32,17 @@ export const DeleteUserModal: React.FC<IModalProps> = ({
     on_request_close();
   }, [on_request_close]);
 
-
   const navigate = useNavigate();
 
   const deleteProfile = useCallback(async () => {
-    try{
-        await api.delete(`/user/delete/${email}`)
+    try {
+      await api.delete(`/user/delete/${email}`);
 
-        navigate('/')
-    }catch(error){
-        toast.error('Ocorreu algum erro na deleção do usuário!')
+      navigate('/');
+    } catch (error) {
+      toast.error('Ocorreu algum erro na deleção do usuário!');
     }
-}, [email, navigate])
+  }, [email, navigate]);
 
   return (
     <Modal
@@ -60,10 +59,10 @@ export const DeleteUserModal: React.FC<IModalProps> = ({
         </ButtonClose>
       </ContainerClose>
       <Container>
-          <Title>Confirme o email para deletar o usuário</Title>         
-          <Input type="text" label="Email" value={email} setValue={setEmail}/>
+        <Title>Confirme o email para deletar o usuário</Title>
+        <Input type="text" label="Email" value={email} setValue={setEmail} />
 
-          <Button onClick={deleteProfile} name="Excluir"/>
+        <Button onClick={deleteProfile} name="Excluir" />
       </Container>
     </Modal>
   );

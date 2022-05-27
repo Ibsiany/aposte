@@ -1,26 +1,25 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
-
-export const Container = styled.div `
-    display: flex;
-    justify-content: center;
-    align-items: center;
+export const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
-export const ButtonForms = styled.button `
-    width: 10rem;
-    height: 2rem;
+export const ButtonForms = styled.button`
+  width: 10rem;
+  height: 2rem;
 
-    border-radius: 0.5rem;
-    
-    border: none;
+  border-radius: 0.5rem;
 
-    color: #fff;
-    background: #006400;
+  border: none;
 
-    transform: filter 0.2s;
+  color: #fff;
+  background: #006400;
 
-    :hover {
-        filter: brightness(0.9);
-    }
+  transform: filter 0.2s;
+
+  :hover {
+    filter: brightness(0.9);
+  }
 `;
