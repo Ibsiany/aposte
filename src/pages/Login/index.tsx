@@ -1,10 +1,11 @@
 import { useCallback, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import toast, { Toaster } from 'react-hot-toast';
 import { Button } from '../../components/Button';
 import { Input } from '../../components/Input';
-import toast, { Toaster } from 'react-hot-toast';
-import { Container, Title, LoginContainer } from './styles';
+import { Title, LoginContainer } from './styles';
 import { useAuth } from '../../hooks/useAuth';
+import { ContainerComponent } from '../../components/ContainerComponent';
 
 export function Login() {
   const [email, setEmail] = useState('');
@@ -23,13 +24,12 @@ export function Login() {
 
       navigate('/auth/dashboard');
     } catch (error) {
-      console.log(error);
       toast.error('Usuário ou senha incorreto(s)!');
     }
   }, [email, navigate, password, signIn]);
 
   return (
-    <Container>
+    <ContainerComponent>
       <Toaster position="top-right" reverseOrder={false} />
       <LoginContainer>
         <Title>Login</Title>
@@ -45,6 +45,6 @@ export function Login() {
 
         <Link to="/create">Cadastre-se</Link>
       </LoginContainer>
-    </Container>
+    </ContainerComponent>
   );
 }

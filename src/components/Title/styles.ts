@@ -8,8 +8,7 @@ export const Container = styled.div`
 `;
 
 export const Text = styled.span`
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  flex-direction: column;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #000000;
 `;

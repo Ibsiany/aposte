@@ -1,11 +1,12 @@
 import { Header } from '../../components/Header';
-import { Container, Body } from './styles';
+import { Body } from './styles';
+import { ContainerComponent } from '../../components/ContainerComponent';
 
 export function ConfigurationTheGame() {
   return (
-    <Container>
+    <ContainerComponent>
       <Header />
       <Body>Hello World!</Body>
-    </Container>
+    </ContainerComponent>
   );
 }

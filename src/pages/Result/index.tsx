@@ -1,11 +1,12 @@
+import { ContainerComponent } from '../../components/ContainerComponent';
 import { Header } from '../../components/Header';
-import { Container, Body } from './styles';
+import { Body } from './styles';
 
 export function Result() {
   return (
-    <Container>
+    <ContainerComponent>
       <Header />
       <Body>Hello World!</Body>
-    </Container>
+    </ContainerComponent>
   );
 }

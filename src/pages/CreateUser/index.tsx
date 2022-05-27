@@ -1,11 +1,11 @@
 import { useCallback, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import toast, { Toaster } from 'react-hot-toast';
 import { Button } from '../../components/Button';
 import { Input } from '../../components/Input';
 import { api } from '../../services/api';
-import { useNavigate } from 'react-router-dom';
-import toast, { Toaster } from 'react-hot-toast';
-import { Container, Title, LoginContainer, ContainerBack } from './styles';
+import { Title, LoginContainer, ContainerBack } from './styles';
+import { ContainerComponent } from '../../components/ContainerComponent';
 
 export function CreateUser() {
   const [name, setName] = useState('');
@@ -29,7 +29,7 @@ export function CreateUser() {
   }, [email, name, navigate, password]);
 
   return (
-    <Container>
+    <ContainerComponent>
       <Toaster position="top-right" reverseOrder={false} />
       <LoginContainer>
         <Title>Cadastro</Title>
@@ -47,6 +47,6 @@ export function CreateUser() {
           <Link to="/">Voltar</Link>
         </ContainerBack>
       </LoginContainer>
-    </Container>
+    </ContainerComponent>
   );
 }

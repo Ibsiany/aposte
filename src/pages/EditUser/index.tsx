@@ -1,19 +1,13 @@
 import { useCallback, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import toast, { Toaster } from 'react-hot-toast';
 import { Button } from '../../components/Button';
 import { Input } from '../../components/Input';
 import { api } from '../../services/api';
-import { useNavigate } from 'react-router-dom';
-import toast, { Toaster } from 'react-hot-toast';
-import {
-  Container,
-  Title,
-  LoginContainer,
-  ContainerBack,
-  ButtonDelete,
-} from './styles';
 import { DeleteUserModal } from '../../components/DeleteUserModal';
-const remove = require('../../images/remove.png');
+import remove from '../../images/remove.png';
+import { Title, LoginContainer, ContainerBack, ButtonDelete } from './styles';
+import { ContainerComponent } from '../../components/ContainerComponent';
 
 export function EditUser() {
   const [name, setName] = useState('');
@@ -46,7 +40,7 @@ export function EditUser() {
   }, [email, name, navigate, password]);
 
   return (
-    <Container>
+    <ContainerComponent>
       <Toaster position="top-right" reverseOrder={false} />
       <LoginContainer>
         <Title>Editar usuário</Title>
@@ -79,6 +73,6 @@ export function EditUser() {
           on_request_close={handleCloseDeleteUserModal}
         />
       </LoginContainer>
-    </Container>
+    </ContainerComponent>
   );
 }
