@@ -10,29 +10,7 @@ import { Result } from '../pages/Result';
 import { PrivateRoute } from './Route';
  
 export const Routes: React.FC = () => {
-    // const history = createBrowserHistory()
-
-    // if(history.location.pathname.includes('dashboard')){
-    //     const element = document.getElementById('dashboard');
-
-    //     console.log(element)
-
-    //     element?.setAttribute('color', '#B22222')
-    // } else if (history.location.pathname.includes('play')){
-    //     const element = document.getElementById('play');
-
-    //     element?.setAttribute('color', '#B22222')
-    // } else if (history.location.pathname.includes('score')){
-    //     const element = document.getElementById('score');
-
-    //     element?.setAttribute('color', '#B22222')
-    // } else if (history.location.pathname.includes('result')){
-    //     const element = document.getElementById('score');
-
-    //     element?.setAttribute('color', '#B22222')
-    // }
-
-return (
+    return (
         <BrowserRouter>
             <Router>
                 <Route path="/" element={<Login />} />

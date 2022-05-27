@@ -26,7 +26,7 @@ export function Header(){
                 <Link to='/auth/result' id="result">
                     Resultados
                 </Link>
-                <Link to='/auth/setting' id="result">
+                <Link to='/auth/setting' id="setting">
                     Configuração de partida
                 </Link>
             </ContainerPage>
