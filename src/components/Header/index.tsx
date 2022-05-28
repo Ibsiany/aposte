@@ -8,7 +8,7 @@ import {
   ContainerButtons,
   Button,
 } from './styles';
-import logo from '../../assets/logo.jpeg';
+import logo from '../../assets/logo.png';
 import Edit from '../../assets/edit_profile.png';
 import logout from '../../assets/logout.png';
 
