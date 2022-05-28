@@ -1,7 +1,8 @@
 import React, { useCallback, useState } from 'react';
 import Modal from 'react-modal';
-import { api } from '../../services/api';
 import toast, { Toaster } from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
+import { api } from '../../services/api';
 import {
   ModalSchedule,
   Container,
@@ -10,10 +11,9 @@ import {
   Image,
   Title,
 } from './styles';
-import { useNavigate } from 'react-router-dom';
 import { Input } from '../Input';
 import { Button } from '../Button';
-const close = require('../../images/close.png');
+import close from '../../assets/close.png';
 
 Modal.setAppElement('#root');
 
@@ -22,10 +22,10 @@ interface IModalProps {
   on_request_close: () => void;
 }
 
-export const DeleteUserModal: React.FC<IModalProps> = ({
+export function DeleteUserModal({
   is_open,
   on_request_close,
-}) => {
+}: IModalProps): JSX.Element {
   const [email, setEmail] = useState('');
 
   const closeModal = useCallback(() => {
@@ -66,4 +66,4 @@ export const DeleteUserModal: React.FC<IModalProps> = ({
       </Container>
     </Modal>
   );
-};
+}

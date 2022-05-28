@@ -5,7 +5,7 @@ import { Button } from '../../components/Button';
 import { Input } from '../../components/Input';
 import { api } from '../../services/api';
 import { DeleteUserModal } from '../../components/DeleteUserModal';
-import remove from '../../images/remove.png';
+import remove from '../../assets/remove.png';
 import { Title, LoginContainer, ContainerBack, ButtonDelete } from './styles';
 import { ContainerComponent } from '../../components/ContainerComponent';
 

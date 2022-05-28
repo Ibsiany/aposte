@@ -3,9 +3,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
 import { Button } from '../../components/Button';
 import { Input } from '../../components/Input';
-import { Title, LoginContainer } from './styles';
+import { Container, Title, LoginContainer } from './styles';
 import { useAuth } from '../../hooks/useAuth';
-import { ContainerComponent } from '../../components/ContainerComponent';
 
 export function Login() {
   const [email, setEmail] = useState('');
@@ -29,7 +28,7 @@ export function Login() {
   }, [email, navigate, password, signIn]);
 
   return (
-    <ContainerComponent>
+    <Container>
       <Toaster position="top-right" reverseOrder={false} />
       <LoginContainer>
         <Title>Login</Title>
@@ -45,6 +44,6 @@ export function Login() {
 
         <Link to="/create">Cadastre-se</Link>
       </LoginContainer>
-    </ContainerComponent>
+    </Container>
   );
 }
