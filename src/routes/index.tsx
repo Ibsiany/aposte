@@ -9,7 +9,7 @@ import { MyBets } from '../pages/MyBets';
 import { Result } from '../pages/Result';
 import { PrivateRoute } from './Route';
 
-export const Routes: React.FC = () => {
+export function Routes(): JSX.Element {
   return (
     <BrowserRouter>
       <Router>
@@ -26,4 +26,4 @@ export const Routes: React.FC = () => {
       </Router>
     </BrowserRouter>
   );
-};
+}

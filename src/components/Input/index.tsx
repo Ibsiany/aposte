@@ -11,9 +11,9 @@ interface IInputProps {
 export function Input({ type, label, value, setValue }: IInputProps) {
   const handleInputChange = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
-      const { value } = event.target;
+      const capture = event.target;
 
-      setValue(value);
+      setValue(capture.value);
     },
     [setValue],
   );

@@ -38,6 +38,7 @@
     "react-hooks/exhaustive-deps": "warn",
     "camelcase": "off",
     "no-restricted-syntax": "off",
+    "react/jsx-no-constructed-context-values": "off",
     "react/jsx-filename-extension": [
       1,
       {
