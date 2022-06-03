@@ -4,9 +4,11 @@ import { AuthProvider } from './hooks/useAuth';
 
 export function App() {
   return (
-    <AuthProvider>
-      <Routes />
+    <>
+      <AuthProvider>
+        <Routes />
+      </AuthProvider>
       <Global />
-    </AuthProvider>
+    </>
   );
 }

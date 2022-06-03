@@ -3,7 +3,6 @@ import {
   ReactNode,
   useCallback,
   useContext,
-  useEffect,
   useState,
 } from 'react';
 import { api } from '../services/api';
@@ -43,29 +42,19 @@ export const AuthContext = createContext<AuthContextData>(
 export function AuthProvider({ children }: AuthProviderProps) {
   const [data, setData] = useState<IData>(() => {
     const user = localStorage.getItem('@Aposte:user');
+    const token = localStorage.getItem('@Aposte:token');
 
-    if (user) {
-      api.defaults.headers.common.Authorization = `Bearer ${
-        JSON.parse(user).token
-      }`;
+    if (user && token) {
+      api.defaults.headers.common.Authorization = `Bearer ${token}`;
 
-      return JSON.parse(user);
+      return {
+        user: JSON.parse(user),
+        token,
+      };
     }
 
-    return {} as User;
+    return {} as IData;
   });
-
-  useEffect(() => {
-    const user = localStorage.getItem('@Aposte:user');
-
-    if (user) {
-      setData(JSON.parse(user));
-
-      api.defaults.headers.common.Authorization = `Bearer ${
-        JSON.parse(user).token
-      }`;
-    }
-  }, []);
 
   const isAuthenticated = !!data.token;
 
@@ -77,13 +66,15 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
     const { token, user } = response.data;
 
-    localStorage.setItem('@Aposte:token', token);
+    if (token && user) {
+      localStorage.setItem('@Aposte:token', token);
 
-    localStorage.setItem('@Aposte:user', JSON.stringify(user));
+      localStorage.setItem('@Aposte:user', JSON.stringify(user));
 
-    setData({ token, user });
+      setData({ token, user });
 
-    api.defaults.headers.common.authorization = `Bearer ${token}`;
+      api.defaults.headers.common.authorization = `Bearer ${token}`;
+    }
   }, []);
 
   const signOut = useCallback(() => {
