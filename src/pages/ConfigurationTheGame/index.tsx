@@ -13,6 +13,8 @@ import {
 import { Title } from '../../components/Title';
 import { api } from '../../services/api';
 import remove from '../../assets/remove.png';
+import camisa from '../../assets/camisa.png';
+import campo from '../../assets/campo.png';
 
 interface IPlay {
   id: string;
@@ -73,7 +75,12 @@ export function ConfigurationTheGame() {
         {plays.length > 0 &&
           plays.map(play => (
             <ContainerPlay key={play.id}>
-              {play.team_a} X {play.team_b}
+              <img src={campo} alt="Campo" />
+              <div className="play">
+                {play.team_a} <img src={camisa} alt="Time A" /> X
+                <img src={camisa} alt="Time A" />
+                {play.team_b}
+              </div>
               <ContainerButtons>
                 <Button
                   onClick={() => handleOpenEditPlayModal(play.id)}

@@ -6,11 +6,18 @@ export const ContainerPlays = styled.div`
 
 export const ContainerPlay = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
+
+  gap: 1rem;
 
   width: 100%;
   border-bottom: 1px solid #ccc;
 
   padding: 0.5rem;
+
+  img {
+    width: 1rem;
+    height: 1rem;
+  }
 `;

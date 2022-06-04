@@ -3,6 +3,7 @@ import { Body } from '../../components/Body';
 import { ContainerPlays, ContainerPlay } from './styles';
 import { Title } from '../../components/Title';
 import { api } from '../../services/api';
+import camisa from '../../assets/camisa.png';
 
 interface IPlay {
   id: string;
@@ -27,7 +28,10 @@ export function Result() {
         {plays.length > 0 &&
           plays.map(play => (
             <ContainerPlay key={play.id}>
-              {play.team_a} X {play.team_b} = {play.result}
+              {play.team_a} <img src={camisa} alt="Time A" /> X
+              <img src={camisa} alt="Time A" />
+              {play.team_b} = <img src={camisa} alt="Time A" /> {play.result}
+              <img src={camisa} alt="Time A" />
             </ContainerPlay>
           ))}
       </ContainerPlays>

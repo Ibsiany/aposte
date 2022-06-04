@@ -13,6 +13,13 @@ export const ContainerPlay = styled.div`
   border-bottom: 1px solid #ccc;
 
   padding: 0.5rem;
+
+  gap: 1rem;
+
+  img {
+    width: 1rem;
+    height: 1rem;
+  }
 `;
 
 export const ContainerButtons = styled.div`

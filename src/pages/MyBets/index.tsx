@@ -12,6 +12,7 @@ import {
   Button,
 } from './styles';
 import { api } from '../../services/api';
+import camisa from '../../assets/camisa.png';
 
 interface IPlay {
   id: string;
@@ -69,7 +70,9 @@ export function MyBets() {
         {bets.length > 0 &&
           bets.map(old_bets => (
             <ContainerPlay key={old_bets.id}>
-              {old_bets.play.team_a} X {old_bets.play.team_b}
+              {old_bets.play.team_a} <img src={camisa} alt="Time A" /> X
+              <img src={camisa} alt="Time A" />
+              {old_bets.play.team_b}
               <ContainerButtons>
                 <ContainerButtons>
                   <Button

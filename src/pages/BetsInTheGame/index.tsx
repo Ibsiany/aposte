@@ -5,6 +5,7 @@ import { Button } from '../../components/Button';
 import { ContainerPlays, ContainerPlay, ContainerButtons } from './styles';
 import { Title } from '../../components/Title';
 import { api } from '../../services/api';
+import camisa from '../../assets/camisa.png';
 
 interface IPlay {
   id: string;
@@ -44,7 +45,9 @@ export function BetsInTheGame() {
         {plays.length > 0 &&
           plays.map(play => (
             <ContainerPlay key={play.id}>
-              {play.team_a} X {play.team_b}
+              {play.team_a} <img src={camisa} alt="Time A" /> X
+              <img src={camisa} alt="Time A" />
+              {play.team_b}
               <ContainerButtons>
                 <Button onClick={() => createBets(play.id)} name="Apostar" />
               </ContainerButtons>
