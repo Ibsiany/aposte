@@ -39,7 +39,7 @@ export function BetsInTheScore() {
   return (
     <Body>
       <Toaster position="top-right" reverseOrder={false} />
-      <Title name="Partidas de hoje" />
+      <Title name="Apostas no placar" />
       <ContainerPlays>
         {plays.length > 0 &&
           plays.map(play => (
