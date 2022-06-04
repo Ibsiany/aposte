@@ -1,19 +1,17 @@
 import toast, { Toaster } from 'react-hot-toast';
 import { useCallback, useEffect, useState } from 'react';
-import { Header } from '../../components/Header';
+import { Body } from '../../components/Body';
 import { EditBetsModal } from '../../components/EditBetsModal';
 import { Title } from '../../components/Title';
 import remove from '../../assets/remove.png';
 import edit from '../../assets/edit_profile.png';
 import {
-  Body,
   ContainerBets,
   ContainerPlays,
   ContainerPlay,
   ContainerButtons,
   Button,
 } from './styles';
-import { ContainerComponent } from '../../components/ContainerComponent';
 import { api } from '../../services/api';
 
 interface IPlay {
@@ -65,43 +63,39 @@ export function MyBets() {
   );
 
   return (
-    <ContainerComponent>
+    <Body>
       <Toaster position="top-right" reverseOrder={false} />
-
-      <Header />
-      <Body>
-        <ContainerBets>
-          <Title name="Minhas apostas" />
-          <ContainerPlays>
-            {bets.length > 0 &&
-              bets.map(old_bets => (
-                <ContainerPlay key={old_bets.id}>
-                  {old_bets.play.team_a} X {old_bets.play.team_b}
+      <ContainerBets>
+        <Title name="Minhas apostas" />
+        <ContainerPlays>
+          {bets.length > 0 &&
+            bets.map(old_bets => (
+              <ContainerPlay key={old_bets.id}>
+                {old_bets.play.team_a} X {old_bets.play.team_b}
+                <ContainerButtons>
                   <ContainerButtons>
-                    <ContainerButtons>
-                      <Button
-                        onClick={() =>
-                          handleOpenEditBetsModal(old_bets.id, old_bets.type)
-                        }
-                      >
-                        <img src={edit} alt="Editar" />
-                      </Button>
-                      <Button onClick={() => deleteBets(old_bets.id)}>
-                        <img src={remove} alt="Excluir" />
-                      </Button>
-                    </ContainerButtons>
+                    <Button
+                      onClick={() =>
+                        handleOpenEditBetsModal(old_bets.id, old_bets.type)
+                      }
+                    >
+                      <img src={edit} alt="Editar" />
+                    </Button>
+                    <Button onClick={() => deleteBets(old_bets.id)}>
+                      <img src={remove} alt="Excluir" />
+                    </Button>
                   </ContainerButtons>
-                </ContainerPlay>
-              ))}
-          </ContainerPlays>
-        </ContainerBets>
-      </Body>
+                </ContainerButtons>
+              </ContainerPlay>
+            ))}
+        </ContainerPlays>
+      </ContainerBets>
       <EditBetsModal
         id={idPlay}
         type={type}
         is_open={openEditBetsModal}
         on_request_close={handleClosedEditBetsModal}
       />
-    </ContainerComponent>
+    </Body>
   );
 }

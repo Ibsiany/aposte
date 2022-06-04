@@ -1,15 +1,13 @@
 import { useCallback, useEffect, useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
-import { Header } from '../../components/Header';
+import { Body } from '../../components/Body';
 import { Button } from '../../components/Button';
 import {
-  Body,
   ContainerBets,
   ContainerPlays,
   ContainerPlay,
   ContainerButtons,
 } from './styles';
-import { ContainerComponent } from '../../components/ContainerComponent';
 import { Title } from '../../components/Title';
 import { api } from '../../services/api';
 
@@ -44,29 +42,22 @@ export function BetsInTheScore() {
   }, []);
 
   return (
-    <ContainerComponent>
+    <Body>
       <Toaster position="top-right" reverseOrder={false} />
-
-      <Header />
-      <Body>
-        <ContainerBets>
-          <Title name="Partidas de hoje" />
-          <ContainerPlays>
-            {plays.length > 0 &&
-              plays.map(play => (
-                <ContainerPlay key={play.id}>
-                  {play.team_a} X {play.team_b}
-                  <ContainerButtons>
-                    <Button
-                      onClick={() => createBets(play.id)}
-                      name="Apostar"
-                    />
-                  </ContainerButtons>
-                </ContainerPlay>
-              ))}
-          </ContainerPlays>
-        </ContainerBets>
-      </Body>
-    </ContainerComponent>
+      <ContainerBets>
+        <Title name="Partidas de hoje" />
+        <ContainerPlays>
+          {plays.length > 0 &&
+            plays.map(play => (
+              <ContainerPlay key={play.id}>
+                {play.team_a} X {play.team_b}
+                <ContainerButtons>
+                  <Button onClick={() => createBets(play.id)} name="Apostar" />
+                </ContainerButtons>
+              </ContainerPlay>
+            ))}
+        </ContainerPlays>
+      </ContainerBets>
+    </Body>
   );
 }
