@@ -15,7 +15,7 @@ export function Result() {
   const [plays, setPlays] = useState<IPlay[]>([]);
 
   useEffect(() => {
-    api.get('/play/result').then(response => {
+    api.get('/play/results').then(response => {
       setPlays(response.data);
     });
   }, []);
