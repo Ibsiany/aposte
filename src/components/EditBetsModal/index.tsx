@@ -19,16 +19,18 @@ Modal.setAppElement('#root');
 
 interface IModalProps {
   id: string;
+  type: string;
   is_open: boolean;
   on_request_close: () => void;
 }
 
-export function EditPlayModal({
+export function EditBetsModal({
   id,
   is_open,
   on_request_close,
+  type,
 }: IModalProps): JSX.Element {
-  const [result, setResult] = useState('');
+  const [value, setValue] = useState('');
 
   const closeModal = useCallback(() => {
     on_request_close();
@@ -38,16 +40,16 @@ export function EditPlayModal({
 
   const createPlay = useCallback(async () => {
     try {
-      await api.post(`/play/edit/`, {
-        result,
+      await api.post(`/bets/${type}/edit/`, {
+        value,
         id,
       });
 
-      navigate('/auth/result');
+      navigate('/auth/dashboard');
     } catch (error) {
-      toast.error('Ocorreu algum erro na edição do jogo!');
+      toast.error('Ocorreu algum erro na edição da aposta!');
     }
-  }, [id, navigate, result]);
+  }, [id, navigate, type, value]);
 
   return (
     <Modal
@@ -67,12 +69,12 @@ export function EditPlayModal({
         <Title>Informe o resultado: </Title>
         <Input
           type="text"
-          label="Resultado"
-          value={result}
-          setValue={setResult}
+          label="Valor da aposta"
+          value={value}
+          setValue={setValue}
         />
 
-        <Button onClick={createPlay} name="Finalizar partida" />
+        <Button onClick={createPlay} name="Editar" />
       </Container>
     </Modal>
   );

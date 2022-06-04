@@ -1,6 +1,7 @@
 import toast, { Toaster } from 'react-hot-toast';
 import { useCallback, useEffect, useState } from 'react';
 import { Header } from '../../components/Header';
+import { EditBetsModal } from '../../components/EditBetsModal';
 import { Title } from '../../components/Title';
 import remove from '../../assets/remove.png';
 import edit from '../../assets/edit_profile.png';
@@ -10,40 +11,57 @@ import {
   ContainerPlays,
   ContainerPlay,
   ContainerButtons,
-  ButtonDelete,
+  Button,
 } from './styles';
 import { ContainerComponent } from '../../components/ContainerComponent';
 import { api } from '../../services/api';
 
 interface IPlay {
   id: string;
-  team_a: string;
-  team_b: string;
-  result?: string;
+  value: string;
+  type: string;
+  play: {
+    team_a: string;
+    team_b: string;
+    result?: string;
+  };
 }
 
 export function MyBets() {
-  const [plays, setPlays] = useState<IPlay[]>([]);
+  const [idPlay, setIdPlay] = useState('');
+  const [type, setType] = useState('');
+  const [bets, setBets] = useState<IPlay[]>([]);
+  const [openEditBetsModal, setOpenEditBetsModal] = useState(false);
 
   useEffect(() => {
     api.get('/bets').then(response => {
-      setPlays(response.data);
+      setBets(response.data);
     });
   }, []);
 
-  const deleteBets = useCallback(
-    async (id: string) => {
-      try {
-        await api.delete(`/bets/delete/${id}`);
+  const deleteBets = useCallback(async (id: string) => {
+    try {
+      await api.delete(`/bets/delete/${id}`);
 
-        const playsFilter = plays.filter(play => play.id !== id);
+      const playsFilter = bets.filter(play => play.id !== id);
 
-        setPlays(playsFilter);
-      } catch (error) {
-        toast.error('Ocorreu algum erro na deleção da aposta!');
-      }
+      setBets(playsFilter);
+    } catch (error) {
+      toast.error('Ocorreu algum erro na deleção da aposta!');
+    }
+  }, []);
+
+  const handleClosedEditBetsModal = useCallback(async () => {
+    setOpenEditBetsModal(false);
+  }, []);
+
+  const handleOpenEditBetsModal = useCallback(
+    (id: string, type_bets: string) => {
+      setIdPlay(id);
+      setType(type_bets);
+      setOpenEditBetsModal(true);
     },
-    [plays],
+    [],
   );
 
   return (
@@ -55,18 +73,22 @@ export function MyBets() {
         <ContainerBets>
           <Title name="Minhas apostas" />
           <ContainerPlays>
-            {plays.length > 0 &&
-              plays.map(play => (
-                <ContainerPlay key={play.id}>
-                  {play.team_a} X {play.team_b}
+            {bets.length > 0 &&
+              bets.map(old_bets => (
+                <ContainerPlay key={old_bets.id}>
+                  {old_bets.play.team_a} X {old_bets.play.team_b}
                   <ContainerButtons>
                     <ContainerButtons>
-                      <ButtonDelete onClick={() => editBets(play.id)}>
+                      <Button
+                        onClick={() =>
+                          handleOpenEditBetsModal(old_bets.id, old_bets.type)
+                        }
+                      >
                         <img src={edit} alt="Editar" />
-                      </ButtonDelete>
-                      <ButtonDelete onClick={() => deleteBets(play.id)}>
+                      </Button>
+                      <Button onClick={() => deleteBets(old_bets.id)}>
                         <img src={remove} alt="Excluir" />
-                      </ButtonDelete>
+                      </Button>
                     </ContainerButtons>
                   </ContainerButtons>
                 </ContainerPlay>
@@ -74,6 +96,12 @@ export function MyBets() {
           </ContainerPlays>
         </ContainerBets>
       </Body>
+      <EditBetsModal
+        id={idPlay}
+        type={type}
+        is_open={openEditBetsModal}
+        on_request_close={handleClosedEditBetsModal}
+      />
     </ContainerComponent>
   );
 }

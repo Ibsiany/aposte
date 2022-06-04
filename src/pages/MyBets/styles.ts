@@ -57,7 +57,7 @@ export const ContainerButtons = styled.div`
   }
 `;
 
-export const ButtonDelete = styled.button`
+export const Button = styled.button`
   font-size: 1.3rem;
   font-weight: bold;
   color: #000000;
