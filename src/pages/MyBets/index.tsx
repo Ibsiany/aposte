@@ -26,7 +26,7 @@ export function MyBets() {
   const [plays, setPlays] = useState<IPlay[]>([]);
 
   useEffect(() => {
-    api.get('/play').then(response => {
+    api.get('/bets').then(response => {
       setPlays(response.data);
     });
   }, []);

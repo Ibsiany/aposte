@@ -24,7 +24,7 @@ export function BetsInTheScore() {
   const [plays, setPlays] = useState<IPlay[]>([]);
 
   useEffect(() => {
-    api.get('/play').then(response => {
+    api.get('/bets/score').then(response => {
       setPlays(response.data);
     });
   }, []);
