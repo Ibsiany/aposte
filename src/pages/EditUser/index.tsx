@@ -6,8 +6,13 @@ import { Input } from '../../components/Input';
 import { api } from '../../services/api';
 import { DeleteUserModal } from '../../components/DeleteUserModal';
 import remove from '../../assets/remove.png';
-import { Title, LoginContainer, ContainerBack, ButtonDelete } from './styles';
-import { ContainerComponent } from '../../components/ContainerComponent';
+import {
+  Container,
+  Title,
+  LoginContainer,
+  ContainerBack,
+  ButtonDelete,
+} from './styles';
 
 export function EditUser() {
   const [name, setName] = useState('');
@@ -40,7 +45,7 @@ export function EditUser() {
   }, [email, name, navigate, password]);
 
   return (
-    <ContainerComponent>
+    <Container>
       <Toaster position="top-right" reverseOrder={false} />
       <LoginContainer>
         <Title>Editar usuário</Title>
@@ -73,6 +78,6 @@ export function EditUser() {
           on_request_close={handleCloseDeleteUserModal}
         />
       </LoginContainer>
-    </ContainerComponent>
+    </Container>
   );
 }

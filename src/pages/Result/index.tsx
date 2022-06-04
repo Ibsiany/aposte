@@ -12,7 +12,7 @@ interface IPlay {
   result?: string;
 }
 
-export function BetsInTheGame() {
+export function Result() {
   const [plays, setPlays] = useState<IPlay[]>([]);
 
   useEffect(() => {

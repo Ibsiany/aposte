@@ -3,10 +3,11 @@ import styled from 'styled-components';
 export const Body = styled.div`
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 
   width: 100vw;
-  height: 80vh;
+
+  margin-top: 1.5rem;
 `;
 
 export const ContainerBets = styled.div`
