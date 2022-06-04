@@ -1,4 +1,8 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+
+interface IProps {
+  color: string | undefined;
+}
 
 export const Container = styled.div`
   display: flex;
@@ -6,7 +10,7 @@ export const Container = styled.div`
   align-items: center;
 `;
 
-export const ButtonForms = styled.button`
+export const ButtonForms = styled.button<IProps>`
   width: 10rem;
   height: 2rem;
 
@@ -16,6 +20,15 @@ export const ButtonForms = styled.button`
 
   color: #fff;
   background: #006400;
+
+  ${props =>
+    props.color
+      ? css`
+          background: red;
+        `
+      : css`
+          background: #006400;
+        `}
 
   transform: filter 0.2s;
 

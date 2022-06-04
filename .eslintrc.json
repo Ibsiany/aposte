@@ -39,6 +39,8 @@
     "camelcase": "off",
     "no-restricted-syntax": "off",
     "react/jsx-no-constructed-context-values": "off",
+    "react/require-default-props": "off",
+    "no-alert": "off",
     "react/jsx-filename-extension": [
       1,
       {
