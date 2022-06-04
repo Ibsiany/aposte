@@ -6,7 +6,6 @@ import { Title } from '../../components/Title';
 import remove from '../../assets/remove.png';
 import edit from '../../assets/edit_profile.png';
 import {
-  ContainerBets,
   ContainerPlays,
   ContainerPlay,
   ContainerButtons,
@@ -65,31 +64,29 @@ export function MyBets() {
   return (
     <Body>
       <Toaster position="top-right" reverseOrder={false} />
-      <ContainerBets>
-        <Title name="Minhas apostas" />
-        <ContainerPlays>
-          {bets.length > 0 &&
-            bets.map(old_bets => (
-              <ContainerPlay key={old_bets.id}>
-                {old_bets.play.team_a} X {old_bets.play.team_b}
+      <Title name="Minhas apostas" />
+      <ContainerPlays>
+        {bets.length > 0 &&
+          bets.map(old_bets => (
+            <ContainerPlay key={old_bets.id}>
+              {old_bets.play.team_a} X {old_bets.play.team_b}
+              <ContainerButtons>
                 <ContainerButtons>
-                  <ContainerButtons>
-                    <Button
-                      onClick={() =>
-                        handleOpenEditBetsModal(old_bets.id, old_bets.type)
-                      }
-                    >
-                      <img src={edit} alt="Editar" />
-                    </Button>
-                    <Button onClick={() => deleteBets(old_bets.id)}>
-                      <img src={remove} alt="Excluir" />
-                    </Button>
-                  </ContainerButtons>
+                  <Button
+                    onClick={() =>
+                      handleOpenEditBetsModal(old_bets.id, old_bets.type)
+                    }
+                  >
+                    <img src={edit} alt="Editar" />
+                  </Button>
+                  <Button onClick={() => deleteBets(old_bets.id)}>
+                    <img src={remove} alt="Excluir" />
+                  </Button>
                 </ContainerButtons>
-              </ContainerPlay>
-            ))}
-        </ContainerPlays>
-      </ContainerBets>
+              </ContainerButtons>
+            </ContainerPlay>
+          ))}
+      </ContainerPlays>
       <EditBetsModal
         id={idPlay}
         type={type}

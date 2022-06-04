@@ -5,7 +5,6 @@ import { Button } from '../../components/Button';
 import { CreatePlayModal } from '../../components/CreatePlayModal';
 import { EditPlayModal } from '../../components/EditPlayModal';
 import {
-  ContainerBets,
   ContainerPlays,
   ContainerPlay,
   ButtonDelete,
@@ -69,28 +68,26 @@ export function ConfigurationTheGame() {
   return (
     <Body>
       <Toaster position="top-right" reverseOrder={false} />
-      <ContainerBets>
-        <Title name="Configuração de partida" />
-        <ContainerPlays>
-          {plays.length > 0 &&
-            plays.map(play => (
-              <ContainerPlay key={play.id}>
-                {play.team_a} X {play.team_b}
-                <ContainerButtons>
-                  <Button
-                    onClick={() => handleOpenEditPlayModal(play.id)}
-                    name="Finalizar"
-                    color="red"
-                  />
-                  <ButtonDelete onClick={() => deletePlay(play.id)}>
-                    <img src={remove} alt="Excluir" />
-                  </ButtonDelete>
-                </ContainerButtons>
-              </ContainerPlay>
-            ))}
-        </ContainerPlays>
-        <Button onClick={handleOpenCreatePlayModal} name="Cadastrar" />
-      </ContainerBets>
+      <Title name="Configuração de partida" />
+      <ContainerPlays>
+        {plays.length > 0 &&
+          plays.map(play => (
+            <ContainerPlay key={play.id}>
+              {play.team_a} X {play.team_b}
+              <ContainerButtons>
+                <Button
+                  onClick={() => handleOpenEditPlayModal(play.id)}
+                  name="Finalizar"
+                  color="red"
+                />
+                <ButtonDelete onClick={() => deletePlay(play.id)}>
+                  <img src={remove} alt="Excluir" />
+                </ButtonDelete>
+              </ContainerButtons>
+            </ContainerPlay>
+          ))}
+      </ContainerPlays>
+      <Button onClick={handleOpenCreatePlayModal} name="Cadastrar" />
 
       <CreatePlayModal
         is_open={openCreatePlayModal}
