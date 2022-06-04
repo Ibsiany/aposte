@@ -1,7 +1,6 @@
 import { useCallback, useState } from 'react';
 import Modal from 'react-modal';
 import toast, { Toaster } from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
 import { api } from '../../services/api';
 import {
   ModalSchedule,
@@ -33,8 +32,6 @@ export function CreatePlayModal({
     on_request_close();
   }, [on_request_close]);
 
-  const navigate = useNavigate();
-
   const createPlay = useCallback(async () => {
     try {
       await api.post(`/play/create/`, {
@@ -46,7 +43,7 @@ export function CreatePlayModal({
     } catch (error) {
       toast.error('Ocorreu algum erro na criação do jogo!');
     }
-  }, [teamA, teamB, navigate, closeModal]);
+  }, [teamA, teamB, closeModal]);
 
   return (
     <Modal
