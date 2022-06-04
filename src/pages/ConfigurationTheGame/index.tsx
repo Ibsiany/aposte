@@ -31,7 +31,7 @@ export function ConfigurationTheGame() {
     api.get('/play').then(response => {
       setPlays(response.data);
     });
-  }, []);
+  }, [openEditPlayModal, openCreatePlayModal]);
 
   const handleClosedCreatePlayModal = useCallback(async () => {
     setOpenCreatePlayModal(false);

@@ -42,11 +42,11 @@ export function CreatePlayModal({
         team_b: teamB,
       });
 
-      navigate('/');
+      closeModal();
     } catch (error) {
       toast.error('Ocorreu algum erro na criação do jogo!');
     }
-  }, [teamA, teamB, navigate]);
+  }, [teamA, teamB, navigate, closeModal]);
 
   return (
     <Modal
