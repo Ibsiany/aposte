@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
 import { Button } from '../../components/Button';
@@ -15,13 +15,25 @@ import {
   ButtonDelete,
 } from './styles';
 
+interface IUser {
+  name: string;
+  point: string;
+}
+
 export function EditUser() {
   const [name, setName] = useState('');
+  const [newUser, setNewUser] = useState<IUser>({} as IUser);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [openDeleteUserModal, setOpenDeleteUserModal] = useState(false);
 
   const { user } = useAuth();
+
+  useEffect(() => {
+    api.get(`/user/${user.user.id}`).then(response => {
+      setNewUser(response.data);
+    });
+  }, [user]);
 
   const navigate = useNavigate();
 
@@ -52,7 +64,7 @@ export function EditUser() {
       <Toaster position="top-right" reverseOrder={false} />
       <LoginContainer>
         <Title>Editar usuário</Title>
-        <span>Pontuação: {user.user.point}</span>
+        <span>Pontuação: {newUser.point}</span>
         <Input type="text" label="Nome" value={name} setValue={setName} />
         <Input
           type="text"

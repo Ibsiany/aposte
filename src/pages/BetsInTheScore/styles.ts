@@ -6,7 +6,7 @@ export const ContainerPlays = styled.div`
 
 export const ContainerPlay = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 
   width: 100%;
@@ -15,30 +15,19 @@ export const ContainerPlay = styled.div`
   padding: 0.5rem;
 
   img {
-    width: 1rem;
-    height: 1rem;
+    width: 2rem;
+    height: 2rem;
   }
 
-  .total {
-    margin-left: 10rem;
-
-    gap: 2rem;
-    width: 20rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    flex-direction: row;
+  .play {
+    margin-left: 7.5rem;
 
     img {
-      :first-child {
-        margin-left: 1rem;
-      }
-
-      :last-child {
-        margin-right: 1rem;
-      }
+      width: 1rem;
+      height: 1rem;
     }
+
+    gap: 1rem;
   }
 `;
 

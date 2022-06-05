@@ -5,6 +5,7 @@ import { ContainerPlays, ContainerPlay, ContainerButtons } from './styles';
 import { Title } from '../../components/Title';
 import { api } from '../../services/api';
 import camisa from '../../assets/camisa.png';
+import campo from '../../assets/campo.png';
 import { CreateBetsModal } from '../../components/CreateBetsModal';
 
 interface IPlay {
@@ -41,15 +42,11 @@ export function BetsInTheGame() {
         {plays.length > 0 &&
           plays.map(play => (
             <ContainerPlay key={play.id}>
-              <div className="total">
-                <div className="team">
-                  {play.team_a} <img src={camisa} alt="Time A" />
-                </div>
-                X
-                <div className="team">
-                  <img src={camisa} alt="Time A" />
-                  {play.team_b}
-                </div>
+              <img src={campo} alt="Campo" />
+              <div className="play">
+                {play.team_a} <img src={camisa} alt="Time A" /> X
+                <img src={camisa} alt="Time A" />
+                {play.team_b}
               </div>
               <ContainerButtons>
                 <Button
