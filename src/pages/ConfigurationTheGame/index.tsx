@@ -4,17 +4,17 @@ import { Body } from '../../components/Body';
 import { Button } from '../../components/Button';
 import { CreatePlayModal } from '../../components/CreatePlayModal';
 import { EditPlayModal } from '../../components/EditPlayModal';
+import remove from '../../assets/remove.png';
+import camisa from '../../assets/camisa.png';
+import campo from '../../assets/campo.png';
+import { Title } from '../../components/Title';
+import { api } from '../../services/api';
 import {
   ContainerPlays,
   ContainerPlay,
   ButtonDelete,
   ContainerButtons,
 } from './styles';
-import { Title } from '../../components/Title';
-import { api } from '../../services/api';
-import remove from '../../assets/remove.png';
-import camisa from '../../assets/camisa.png';
-import campo from '../../assets/campo.png';
 
 interface IPlay {
   id: string;

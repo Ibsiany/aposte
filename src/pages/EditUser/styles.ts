@@ -28,7 +28,7 @@ export const LoginContainer = styled.div`
   flex-direction: column;
 
   width: 30rem;
-  height: 25rem;
+  height: 28rem;
 
   border-radius: 0.5rem;
   padding: 1rem;

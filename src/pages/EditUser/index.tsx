@@ -6,6 +6,7 @@ import { Input } from '../../components/Input';
 import { api } from '../../services/api';
 import { DeleteUserModal } from '../../components/DeleteUserModal';
 import remove from '../../assets/remove.png';
+import { useAuth } from '../../hooks/useAuth';
 import {
   Container,
   Title,
@@ -19,6 +20,8 @@ export function EditUser() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [openDeleteUserModal, setOpenDeleteUserModal] = useState(false);
+
+  const { user } = useAuth();
 
   const navigate = useNavigate();
 
@@ -49,6 +52,7 @@ export function EditUser() {
       <Toaster position="top-right" reverseOrder={false} />
       <LoginContainer>
         <Title>Editar usuário</Title>
+        <span>Pontuação: {user.user.point}</span>
         <Input type="text" label="Nome" value={name} setValue={setName} />
         <Input
           type="text"

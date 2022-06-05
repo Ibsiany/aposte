@@ -11,6 +11,7 @@ interface User {
   id: string;
   name: string;
   email: string;
+  point: string;
   token: string;
 }
 
