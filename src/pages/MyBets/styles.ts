@@ -1,13 +1,33 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+
+interface IProps {
+  exists: boolean;
+}
 
 export const ContainerPlays = styled.div`
   width: 100%;
 `;
 
-export const ContainerPlay = styled.div`
+export const ContainerPlay = styled.div<IProps>`
   display: flex;
-  justify-content: space-around;
   align-items: center;
+
+  ${props =>
+    props.exists
+      ? css`
+          justify-content: space-around;
+        `
+      : css`
+          justify-content: center;
+
+          .buttons {
+            display: none;
+          }
+
+          .bets {
+            width: 100%;
+          }
+        `}
 
   width: 100%;
   border-bottom: 1px solid #ccc;

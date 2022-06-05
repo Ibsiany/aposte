@@ -70,14 +70,15 @@ export function MyBets() {
       <ContainerPlays>
         {bets.length > 0 &&
           bets.map(old_bets => (
-            <ContainerPlay key={old_bets.id}>
+            <ContainerPlay key={old_bets.id} exists={!old_bets.play.result}>
               <div className="bets">
                 {old_bets.play.team_a} <img src={camisa} alt="Time A" /> X
                 <img src={camisa} alt="Time A" />
                 {old_bets.play.team_b} = <img src={camisa} alt="Time A" />{' '}
                 {old_bets.value}
               </div>
-              <ContainerButtons>
+
+              <ContainerButtons className="buttons">
                 <ContainerButtons>
                   <Button onClick={() => handleOpenEditBetsModal(old_bets.id)}>
                     <img src={edit} alt="Editar" />
