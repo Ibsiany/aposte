@@ -6,13 +6,40 @@ export const ContainerPlays = styled.div`
 
 export const ContainerPlay = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
 
   width: 100%;
   border-bottom: 1px solid #ccc;
 
   padding: 0.5rem;
+
+  img {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .total {
+    margin-left: 10rem;
+
+    gap: 2rem;
+    width: 20rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    flex-direction: row;
+
+    img {
+      :first-child {
+        margin-left: 1rem;
+      }
+
+      :last-child {
+        margin-right: 1rem;
+      }
+    }
+  }
 `;
 
 export const ContainerButtons = styled.div`

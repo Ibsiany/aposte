@@ -14,38 +14,38 @@ import {
 import { Input } from '../Input';
 import { Button } from '../Button';
 import close from '../../assets/close.png';
+import { useAuth } from '../../hooks/useAuth';
 
 Modal.setAppElement('#root');
 
 interface IModalProps {
   id: string;
+  type: string;
   is_open: boolean;
   on_request_close: () => void;
 }
 
-interface IBets {
+interface IPlay {
   id: string;
-  value: string;
-  type: string;
-  play: {
-    team_a: string;
-    team_b: string;
-    result?: string;
-  };
-  id_play: string;
+  team_a: string;
+  team_b: string;
+  result?: string;
 }
 
-export function EditBetsModal({
+export function CreateBetsModal({
   id,
   is_open,
   on_request_close,
+  type,
 }: IModalProps): JSX.Element {
-  const [bets, setBets] = useState<IBets>({} as IBets);
+  const [play, setPlay] = useState<IPlay>({} as IPlay);
   const [value, setValue] = useState('');
 
+  const { user } = useAuth();
+
   useEffect(() => {
-    api.get(`/bets/${id}`).then(response => {
-      setBets(response.data);
+    api.get(`/play/${id}`).then(response => {
+      setPlay(response.data);
     });
   }, [id]);
 
@@ -55,18 +55,19 @@ export function EditBetsModal({
 
   const navigate = useNavigate();
 
-  const editBets = useCallback(async () => {
+  const createPlay = useCallback(async () => {
     try {
-      await api.post(`/bets/${bets.type}/edit/`, {
+      await api.post(`/bets/${type}/create/`, {
         value,
-        id,
+        id_user: user.user.id,
+        id_play: id,
       });
 
       navigate('/auth/dashboard');
     } catch (error) {
       toast.error('Ocorreu algum erro na criação da aposta!');
     }
-  }, [bets.type, id, navigate, value]);
+  }, [id, navigate, type, user, value]);
 
   function handleSelectChange(event: ChangeEvent<HTMLSelectElement>) {
     const element = event.target;
@@ -91,15 +92,15 @@ export function EditBetsModal({
       <Container>
         <Title>Informe o resultado: </Title>
 
-        {bets.type === 'JOGO' ? (
+        {type === 'play' ? (
           <select
             className="select"
             name="result"
             onChange={handleSelectChange}
           >
             <option>Selecione uma opção</option>
-            <option>{bets.play.team_a}</option>
-            <option>{bets.play.team_b}</option>
+            <option>{play.team_a}</option>
+            <option>{play.team_b}</option>
           </select>
         ) : (
           <Input
@@ -110,7 +111,7 @@ export function EditBetsModal({
           />
         )}
 
-        <Button onClick={editBets} name="Apostar" />
+        <Button onClick={createPlay} name="Apostar" />
       </Container>
     </Modal>
   );

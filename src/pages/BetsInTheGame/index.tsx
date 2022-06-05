@@ -1,11 +1,11 @@
 import { useCallback, useEffect, useState } from 'react';
-import toast, { Toaster } from 'react-hot-toast';
 import { Body } from '../../components/Body';
 import { Button } from '../../components/Button';
 import { ContainerPlays, ContainerPlay, ContainerButtons } from './styles';
 import { Title } from '../../components/Title';
 import { api } from '../../services/api';
 import camisa from '../../assets/camisa.png';
+import { CreateBetsModal } from '../../components/CreateBetsModal';
 
 interface IPlay {
   id: string;
@@ -15,44 +15,56 @@ interface IPlay {
 }
 
 export function BetsInTheGame() {
+  const [idPlay, setIdPlay] = useState('');
   const [plays, setPlays] = useState<IPlay[]>([]);
+  const [openEditBetsModal, setOpenEditBetsModal] = useState(false);
 
   useEffect(() => {
-    api.get('/bets/play').then(response => {
+    api.get('/play').then(response => {
       setPlays(response.data);
     });
   }, []);
 
-  const createBets = useCallback(async (id: string) => {
-    try {
-      if (window.confirm('Você tem certeza que deseja realizar essa aposta?')) {
-        const { data } = await api.post(`/bets/play/`, {
-          id,
-        });
+  const handleClosedEditBetsModal = useCallback(async () => {
+    setOpenEditBetsModal(false);
+  }, []);
 
-        setPlays([...plays, data]);
-      }
-    } catch (error) {
-      toast.error('Ocorreu algum erro na criação do jogo!');
-    }
+  const handleOpenEditBetsModal = useCallback((id: string) => {
+    setIdPlay(id);
+    setOpenEditBetsModal(true);
   }, []);
 
   return (
     <Body>
-      <Toaster position="top-right" reverseOrder={false} />
       <Title name="Apostas no jogo" />
       <ContainerPlays>
         {plays.length > 0 &&
           plays.map(play => (
             <ContainerPlay key={play.id}>
-              {play.team_a} <img src={camisa} alt="Time A" /> X
-              <img src={camisa} alt="Time A" />
-              {play.team_b}
+              <div className="total">
+                <div className="team">
+                  {play.team_a} <img src={camisa} alt="Time A" />
+                </div>
+                X
+                <div className="team">
+                  <img src={camisa} alt="Time A" />
+                  {play.team_b}
+                </div>
+              </div>
               <ContainerButtons>
-                <Button onClick={() => createBets(play.id)} name="Apostar" />
+                <Button
+                  onClick={() => handleOpenEditBetsModal(play.id)}
+                  name="Apostar"
+                />
               </ContainerButtons>
             </ContainerPlay>
           ))}
+        <CreateBetsModal
+          id={idPlay}
+          type="play"
+          is_open={openEditBetsModal}
+          on_request_close={handleClosedEditBetsModal}
+        />
       </ContainerPlays>
     </Body>
   );

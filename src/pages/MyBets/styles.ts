@@ -20,6 +20,10 @@ export const ContainerPlay = styled.div`
     width: 1rem;
     height: 1rem;
   }
+
+  .bets {
+    margin-left: 19rem;
+  }
 `;
 
 export const ContainerButtons = styled.div`
