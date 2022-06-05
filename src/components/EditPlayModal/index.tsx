@@ -39,7 +39,7 @@ export function EditPlayModal({
   const createPlay = useCallback(async () => {
     try {
       await api.patch(`/play/edit/`, {
-        result,
+        result: result.toLowerCase(),
         id,
       });
 
