@@ -42,7 +42,7 @@ export const ContainerPlay = styled.div<IProps>`
   }
 
   .bets {
-    margin-left: 19rem;
+    margin-left: 13.5rem;
   }
 `;
 
