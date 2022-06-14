@@ -17,7 +17,7 @@ export class CreateBetsInTheScoreService {
 
         const foundBet = await this.betsRepository.findByUserId(id_user);
 
-        const findUser = foundBet.find(bets => bets.type === "PLACAR")
+        const findUser = foundBet.find(bets => bets.type === "PLACAR" && bets.id_play === id_play)
 
         if(findUser){
             throw new Error("the Bet already exist!")

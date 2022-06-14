@@ -42,7 +42,9 @@ export const ContainerPlay = styled.div<IProps>`
   }
 
   .bets {
-    margin-left: 13.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 `;
 
